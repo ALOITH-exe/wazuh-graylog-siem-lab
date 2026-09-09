@@ -80,31 +80,6 @@ Graylog can also expose a **Syslog TCP/UDP input such as `5514`** when direct ne
 
 ---
 
-## 📁 Repository Structure
-
-```text
-wazuh-graylog-siem-lab/
-├── docker-compose.yml
-├── filebeat/
-│   └── filebeat.yml
-├── graylog/
-│   └── pipelines/
-├── wazuh/
-│   ├── local_rules.xml
-│   └── local_decoder.xml
-├── scripts/
-│   └── test-integration.sh
-├── docs/
-│   ├── architecture.md
-│   └── troubleshooting.md
-├── wazuh-graylog-architecture.png
-├── wazuh-graylog-architecture.gif
-├── LICENSE
-└── README.md
-```
-
----
-
 ##  Technology Stack
 
 | Component | Version / Role |
