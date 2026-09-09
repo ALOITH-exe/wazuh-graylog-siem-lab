@@ -1,0 +1,70 @@
+yaml
+services:
+  mongodb:
+    image: mongo:8.0
+    container_name: graylog-mongodb
+    volumes:
+      - mongodb_data:/data/db
+      - mongodb_config:/data/configdb
+    networks:
+      - graylog-network
+    restart: unless-stopped
+
+  opensearch:
+    image: opensearchproject/opensearch:2.19.5
+    container_name: graylog-opensearch
+    environment:
+      - cluster.name=graylog-cluster
+      - node.name=opensearch-node1
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - OPENSEARCH_JAVA_OPTS=-Xms1g -Xmx1g
+      - DISABLE_SECURITY_PLUGIN=true
+      - DISABLE_INSTALL_DEMO_CONFIG=true
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65535
+        hard: 65535
+    volumes:
+      - opensearch_data:/usr/share/opensearch/data
+    networks:
+      - graylog-network
+    restart: unless-stopped
+
+  graylog:
+    image: graylog/graylog:7.1
+    container_name: graylog-server
+    environment:
+      - GRAYLOG_PASSWORD_SECRET=REPLACE_WITH_96_CHAR_SECRET
+      - GRAYLOG_ROOT_PASSWORD_SHA2=REPLACE_WITH_SHA256_HASH
+      - GRAYLOG_HTTP_BIND_ADDRESS=0.0.0.0:9000
+      - GRAYLOG_HTTP_EXTERNAL_URI=http://192.168.1.6:9000/
+      - GRAYLOG_MONGODB_URI=mongodb://mongodb:27017/graylog
+      - GRAYLOG_ELASTICSEARCH_HOSTS=http://opensearch:9200
+      - GRAYLOG_ROOT_TIMEZONE=UTC
+    ports:
+      - "9000:9000"
+      - "5514:5514/tcp"
+      - "5514:5514/udp"
+      - "5044:5044"
+    volumes:
+      - graylog_data:/usr/share/graylog/data
+    networks:
+      - graylog-network
+    restart: unless-stopped
+    depends_on:
+      - mongodb
+      - opensearch
+
+volumes:
+  mongodb_data:
+  mongodb_config:
+  opensearch_data:
+  graylog_data:
+
+networks:
+  graylog-network:
+    driver: bridge
