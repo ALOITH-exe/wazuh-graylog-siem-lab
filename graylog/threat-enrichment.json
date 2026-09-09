@@ -1,0 +1,66 @@
+[
+  {
+    "rule": "Enrich Wazuh Alerts with Threat Intelligence",
+    "when": {
+      "has_field": "data.srcip",
+      "not": {
+        "is_empty": {
+          "field": "data.srcip"
+        }
+      }
+    },
+    "then": [
+      {
+        "set_field": {
+          "threat_checked": true
+        }
+      },
+      {
+        "lookup": {
+          "table": "otx-ip-lookup",
+          "key": "${message.data.srcip}",
+          "set_fields": {
+            "threat_reputation": "${lookup.reputation}",
+            "threat_categories": "${lookup.categories}",
+            "threat_known": "${lookup.threat_indicated}",
+            "threat_pulses": "${lookup.pulse_names}"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "rule": "Check IP for Tor Exit Node",
+    "when": {
+      "has_field": "data.srcip"
+    },
+    "then": [
+      {
+        "lookup": {
+          "table": "tor-exit-node-list",
+          "key": "${message.data.srcip}",
+          "set_fields": {
+            "tor_exit_node": "${lookup.threat_indicated}"
+          }
+        }
+      }
+    ]
+  },
+  {
+    "rule": "Check IP in Spamhaus DROP",
+    "when": {
+      "has_field": "data.srcip"
+    },
+    "then": [
+      {
+        "lookup": {
+          "table": "spamhaus-drop",
+          "key": "${message.data.srcip}",
+          "set_fields": {
+            "spamhaus_flag": "${lookup.threat_indicated}"
+          }
+        }
+      }
+    ]
+  }
+]
