@@ -386,16 +386,6 @@ Before adapting it to production:
 
 ---
 
-## 📚 Documentation
-
-- [`docs/architecture.md`](docs/architecture.md) — architecture and data flow
-- [`docs/troubleshooting.md`](docs/troubleshooting.md) — operational troubleshooting
-- [`filebeat/filebeat.yml`](filebeat/filebeat.yml) — Wazuh → Graylog shipping configuration
-- [`wazuh/local_rules.xml`](wazuh/local_rules.xml) — custom detection rules
-- [`graylog/pipelines/`](graylog/pipelines/) — enrichment and processing logic
-
----
-
 ##  What You Learn From This Lab
 
 This project provides hands-on exposure to:
