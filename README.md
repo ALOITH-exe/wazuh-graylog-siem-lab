@@ -368,45 +368,6 @@ Verify:
 
 ---
 
-##  Security Use Cases to Extend
-
-This lab can be expanded into a much stronger SOC portfolio project by adding:
-
-- Windows Defender and Sysmon telemetry
-- Active Directory authentication monitoring
-- Privilege escalation detections
-- PowerShell and LOLBin detections
-- RDP brute-force and suspicious logon detection
-- DNS anomaly detection
-- Web server attack detection
-- IOC matching against external feeds
-- MITRE ATT&CK technique tagging
-- Graylog alerting and event definitions
-- Case management / incident workflow
-- SOAR integration for automated response
-- Sigma-based detection engineering
-- Detection validation with Atomic Red Team or controlled lab simulations
-
----
-
-##  Suggested Portfolio Metrics
-
-Once the lab is operational, document measurable results such as:
-
-```text
-Telemetry sources integrated:       X
-Wazuh custom rules:                 X
-Graylog pipelines:                  X
-Threat-intelligence sources:        X
-Detections validated:               X
-Mean alert investigation time:      X
-False positives reduced:            X%
-```
-
-This turns the repository from a configuration dump into a demonstrable **SOC engineering project**.
-
----
-
 ##  Security Notes
 
 This repository is designed for a controlled lab environment.
