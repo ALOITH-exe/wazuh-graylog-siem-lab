@@ -1,7 +1,7 @@
-# 🛡️ Wazuh + Graylog SIEM Lab
+#  Wazuh + Graylog SIEM Lab
 
 <p align="center">
-  <img src="wazuh-graylog-architecture.png" alt="Wazuh and Graylog SIEM Lab Architecture" width="100%">
+  <img src="architecture/wazuh-graylog-architecture.png" alt="Wazuh and Graylog SIEM Lab Architecture" width="100%">
 </p>
 
 <p align="center">
@@ -18,7 +18,7 @@
 
 ---
 
-## 🔎 What This Lab Demonstrates
+##  What This Lab Demonstrates
 
 This project builds a practical **security monitoring and SIEM lab** around two complementary platforms:
 
@@ -36,7 +36,7 @@ The result is a compact, reproducible SOC environment suitable for **detection e
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 ### Telemetry Flow
 
@@ -70,7 +70,7 @@ Graylog can also expose a **Syslog TCP/UDP input such as `5514`** when direct ne
 
 ---
 
-## ✨ Key Capabilities
+##  Key Capabilities
 
 | Layer | Capability |
 |---|---|
@@ -110,7 +110,7 @@ wazuh-graylog-siem-lab/
 
 ---
 
-## 🧰 Technology Stack
+##  Technology Stack
 
 | Component | Version / Role |
 |---|---|
@@ -126,7 +126,7 @@ wazuh-graylog-siem-lab/
 
 ---
 
-## 🚀 Deployment
+##  Deployment
 
 ### 1. Start Graylog
 
@@ -222,7 +222,7 @@ Then search Graylog for incoming Wazuh events.
 
 ---
 
-## 🧪 Detection Engineering
+##  Detection Engineering
 
 ### SSH Brute-Force Use Case
 
@@ -263,7 +263,7 @@ These rules provide a starting point for expanding the lab into **MITRE ATT&CK-a
 
 ---
 
-## 🌐 Threat Intelligence Enrichment
+##  Threat Intelligence Enrichment
 
 Graylog pipelines can enrich Wazuh events using external intelligence sources:
 
@@ -283,7 +283,7 @@ Then configure the relevant Graylog lookup / HTTP JSONPath data adapter and refe
 
 ---
 
-## 🔍 Example Enriched Event
+##  Example Enriched Event
 
 A normalized event can expose fields such as:
 
@@ -309,7 +309,7 @@ The exact fields depend on the Wazuh alert, Graylog pipeline rules and enrichmen
 
 ---
 
-## ✅ Verification Checklist
+##  Verification Checklist
 
 ### Wazuh
 
@@ -353,7 +353,7 @@ rule.id:100012
 
 ---
 
-## 🛠️ Troubleshooting
+##  Troubleshooting
 
 ### Wazuh alerts exist but Graylog receives nothing
 
@@ -398,7 +398,7 @@ Verify:
 
 ---
 
-## 🎯 Security Use Cases to Extend
+##  Security Use Cases to Extend
 
 This lab can be expanded into a much stronger SOC portfolio project by adding:
 
@@ -419,7 +419,7 @@ This lab can be expanded into a much stronger SOC portfolio project by adding:
 
 ---
 
-## 📊 Suggested Portfolio Metrics
+##  Suggested Portfolio Metrics
 
 Once the lab is operational, document measurable results such as:
 
@@ -437,7 +437,7 @@ This turns the repository from a configuration dump into a demonstrable **SOC en
 
 ---
 
-## 🔐 Security Notes
+##  Security Notes
 
 This repository is designed for a controlled lab environment.
 
@@ -465,7 +465,7 @@ Before adapting it to production:
 
 ---
 
-## 🧠 What You Learn From This Lab
+##  What You Learn From This Lab
 
 This project provides hands-on exposure to:
 
