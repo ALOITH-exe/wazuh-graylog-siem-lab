@@ -57,11 +57,6 @@ flowchart LR
     S --> SOC["SOC Analyst"]
 ```
 
-### Visual Architecture
-
-> Static README-friendly diagram: [`wazuh-graylog-architecture.png`](wazuh-graylog-architecture.png)  
-> Animated telemetry-flow variant: [`wazuh-graylog-architecture.gif`](wazuh-graylog-architecture.gif)
-
 The primary integration path is:
 
 **Wazuh Manager → `alerts.json` → Filebeat → Graylog Beats input (`5044`) → Pipelines / Enrichment → OpenSearch → Investigation**
