@@ -1,0 +1,22 @@
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /var/ossec/logs/alerts/alerts.json
+    json.keys_under_root: true
+    json.add_error_key: true
+    json.message_key: full_log
+    fields:
+      source: wazuh
+    fields_under_root: true
+
+output.logstash:
+  hosts: ["192.168.1.6:5044"]
+
+processors:
+  - decode_json_fields:
+      fields: ["message"]
+      target: ""
+      overwrite_keys: true
+
+logging.metrics.enabled: false
